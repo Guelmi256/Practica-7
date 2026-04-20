@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PokeDesk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow">Proyecto HTML, CSS y JS</p>
+        <h1>PokeDesk</h1>
+        <p class="hero__text">
+          Explora los primeros 151 Pokémon con una interfaz inspirada en una Pokédex:
+          búsqueda rápida, estadísticas, tipos y datos principales.
+        </p>
+      </div>
+
+      <div class="hero__badge">
+        <span class="hero__badge-light"></span>
+        <span class="hero__badge-light hero__badge-light--small"></span>
+        <span class="hero__badge-light hero__badge-light--small is-yellow"></span>
+        <span class="hero__badge-light hero__badge-light--small is-green"></span>
+      </div>
+    </header>
+
+    <section class="auth-bar">
+      <div class="auth-bar__info">
+        <p class="list-header__eyebrow">Autenticación</p>
+        <strong id="auth-user">No has iniciado sesión</strong>
+      </div>
+      <div class="auth-bar__actions">
+        <button class="auth-btn" id="login-btn" type="button">Entrar con Google</button>
+        <button class="auth-btn auth-btn--secondary" id="logout-btn" type="button" hidden>Cerrar sesión</button>
+      </div>
+    </section>
+
+    <main class="pokedex">
+      <section class="panel panel--left">
+        <div class="screen">
+          <div class="screen__status">
+            <span class="dot is-red"></span>
+            <span class="dot is-yellow"></span>
+            <span class="dot is-green"></span>
+          </div>
+
+          <div class="screen__body" id="featured-card">
+            <p class="screen__placeholder">Cargando Pokémon...</p>
+          </div>
+        </div>
+
+        <div class="controls">
+          <div class="search-box">
+            <label for="search" class="search-box__label">Buscar por nombre o número</label>
+            <input
+              id="search"
+              class="search-box__input"
+              type="text"
+              placeholder="Ej. pikachu o 25"
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="stats-box">
+            <p class="stats-box__title">Resumen</p>
+            <div class="stats-box__row">
+              <span>Total cargados</span>
+              <strong id="loaded-count">0</strong>
+            </div>
+            <div class="stats-box__row">
+              <span>Mostrados</span>
+              <strong id="visible-count">0</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel--right">
+        <div class="list-header">
+          <div>
+            <p class="list-header__eyebrow">Directorio</p>
+            <h2>Pokémon</h2>
+          </div>
+          <button class="refresh-btn" id="refresh-btn" type="button">Recargar</button>
+        </div>
+
+        <section class="favorites-box">
+          <div class="favorites-box__header">
+            <div>
+              <p class="list-header__eyebrow">Firebase</p>
+              <h3>Favoritos guardados</h3>
+            </div>
+            <strong id="favorites-count">0</strong>
+          </div>
+          <div class="favorites-list" id="favorites-list">
+            <p class="favorites-empty">Todavía no hay favoritos guardados.</p>
+          </div>
+        </section>
+
+        <div class="pokemon-list" id="pokemon-list" aria-live="polite"></div>
+      </section>
+    </main>
+  </div>
+
+  <template id="featured-template">
+    <article class="pokemon-card">
+      <div class="pokemon-card__top">
+        <div>
+          <p class="pokemon-card__id"></p>
+          <h2 class="pokemon-card__name"></h2>
+        </div>
+        <div class="pokemon-card__types"></div>
+      </div>
+
+      <div class="pokemon-card__visual">
+        <div class="pokemon-card__glow"></div>
+        <img class="pokemon-card__image" src="" alt="">
+      </div>
+
+      <div class="pokemon-card__details">
+        <div class="pokemon-card__detail">
+          <span>Altura</span>
+          <strong class="pokemon-card__height"></strong>
+        </div>
+        <div class="pokemon-card__detail">
+          <span>Peso</span>
+          <strong class="pokemon-card__weight"></strong>
+        </div>
+        <div class="pokemon-card__detail">
+          <span>Experiencia base</span>
+          <strong class="pokemon-card__xp"></strong>
+        </div>
+      </div>
+
+      <div class="pokemon-card__actions">
+        <button class="favorite-btn" type="button" id="favorite-btn">Guardar en favoritos</button>
+        <p class="favorite-status" id="favorite-status"></p>
+      </div>
+
+      <div class="pokemon-card__stats"></div>
+    </article>
+  </template>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
